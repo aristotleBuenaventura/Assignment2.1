@@ -34,30 +34,38 @@
 </body>
 
 <script>
+
     function getInfo()
     {
-        if(fullname.value && email.value && password.value && cpassword.value){
-            let fullname = parseInt(document.querySelector('#fullname').value);
-            let email = parseInt(document.querySelector('#email').value);
-            let password = parseInt(document.querySelector('#password').value);
-            let cpassword = parseInt(document.querySelector('#cpassword').value);
-           
-           if(password != cpassword )
-           {
-                alert("Password do not match");
-           }
-           else
-           {
-            document.getElementById("btnLogin").onclick = function () {
-            location.href = "index.html";
-          };
-           }
+        let fullname = document.querySelector('#fullname').value;
+        let email = document.querySelector('#email').value;
+        let password = document.querySelector('#password').value;
+        let cpassword = document.querySelector('#cpassword').value;
+        let letters = /^[A-Za-z]+$/;
 
-           
+        if(fullname && email && password && cpassword){
+
+            if(!fullname.match(letters)) {
+                alert("Numerical numbers are not allowed in Full Name");
+            }else if(password.length < 8) {  
+                alert("Password length must be atleast 8 characters");  
+            }  
+            else if(password.length > 15) {  
+                alert("Password length must not exceed 15 characters");  
+            } 
+            else if(password != cpassword ){
+                alert("Password do not match");
+            }
+            else {
+                location.href = "index.html";
+            }
         }	
         else{
             alert("Fill up all text-field");
         }
     }
+
+
+
 </script>
 </html>
